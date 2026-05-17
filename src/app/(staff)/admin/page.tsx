@@ -30,10 +30,10 @@ export default async function AdminPage() {
   const pendingCount = pendingOrders?.length ?? 0
 
   const stats = [
-    { label: 'Doanh thu hôm nay', value: formatCurrency(todayRevenue), icon: TrendingUp, color: 'text-green-600 bg-green-50' },
-    { label: 'Order đã TT', value: totalOrders, icon: ShoppingBag, color: 'text-blue-600 bg-blue-50' },
-    { label: 'Order đang xử lý', value: pendingCount, icon: ShoppingBag, color: 'text-orange-600 bg-orange-50' },
-    { label: 'Chi nhánh đang mở', value: activeBranches, icon: Store, color: 'text-purple-600 bg-purple-50' },
+    { label: 'Doanh thu hôm nay', value: formatCurrency(todayRevenue), icon: TrendingUp, color: 'text-green-600 bg-green-50', href: '/admin/reports' },
+    { label: 'Order đã TT', value: totalOrders, icon: ShoppingBag, color: 'text-blue-600 bg-blue-50', href: '/admin/reports' },
+    { label: 'Order đang xử lý', value: pendingCount, icon: ShoppingBag, color: 'text-orange-600 bg-orange-50', href: '/pos' },
+    { label: 'Chi nhánh đang mở', value: activeBranches, icon: Store, color: 'text-purple-600 bg-purple-50', href: '/admin/branches' },
   ]
 
   const quickLinks = [
@@ -51,13 +51,15 @@ export default async function AdminPage() {
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
         {stats.map(stat => (
-          <Card key={stat.label} className="p-4">
-            <div className={`inline-flex p-2 rounded-xl mb-3 ${stat.color}`}>
-              <stat.icon size={20} />
-            </div>
-            <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
-            <p className="text-sm text-gray-500 mt-1">{stat.label}</p>
-          </Card>
+          <Link key={stat.label} href={stat.href}>
+            <Card className="p-4 hover:shadow-md transition-shadow cursor-pointer group">
+              <div className={`inline-flex p-2 rounded-xl mb-3 ${stat.color}`}>
+                <stat.icon size={20} />
+              </div>
+              <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
+              <p className="text-sm text-gray-500 mt-1 group-hover:text-orange-500 transition-colors">{stat.label}</p>
+            </Card>
+          </Link>
         ))}
       </div>
 
