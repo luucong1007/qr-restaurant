@@ -10,6 +10,7 @@ export default function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPw, setShowPw] = useState(false)
+  const [remember, setRemember] = useState(true)
   const [loading, setLoading] = useState(false)
   const router = useRouter()
 
@@ -17,7 +18,11 @@ export default function LoginPage() {
     e.preventDefault()
     setLoading(true)
     const supabase = createClient()
-    const { error } = await supabase.auth.signInWithPassword({ email, password })
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password })
+    if (!error && !remember && data.session) {
+      // Bỏ ghi nhớ: xoá session khỏi storage, chỉ giữ trong memory
+      await supabase.auth.setSession({ access_token: data.session.access_token, refresh_token: '' })
+    }
     setLoading(false)
     if (error) { toast.error('Sai email hoặc mật khẩu'); return }
     router.push('/admin')
@@ -74,6 +79,16 @@ export default function LoginPage() {
               </button>
             </div>
           </div>
+
+          <label className="flex items-center gap-2 cursor-pointer select-none">
+            <input
+              type="checkbox"
+              checked={remember}
+              onChange={e => setRemember(e.target.checked)}
+              className="w-4 h-4 accent-orange-500 rounded"
+            />
+            <span className="text-sm text-gray-600">Ghi nhớ đăng nhập</span>
+          </label>
 
           <Button size="lg" className="w-full" type="submit" loading={loading}>
             Đăng nhập
