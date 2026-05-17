@@ -3,11 +3,13 @@ import { useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
+import { Eye, EyeOff } from 'lucide-react'
 import toast from 'react-hot-toast'
 
 export default function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [showPw, setShowPw] = useState(false)
   const [loading, setLoading] = useState(false)
   const router = useRouter()
 
@@ -21,33 +23,58 @@ export default function LoginPage() {
     router.push('/admin')
   }
 
+  const inputCls = 'mt-1 w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-300'
+
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 w-full max-w-sm">
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">Đăng nhập</h1>
-        <p className="text-gray-500 text-sm mb-6">Dành cho nhân viên & quản lý</p>
-        <form onSubmit={login} className="space-y-4">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="bg-orange-500 rounded-2xl w-11 h-11 flex items-center justify-center text-2xl shadow-sm">🍜</div>
           <div>
-            <label className="text-sm font-medium text-gray-700">Email</label>
+            <h1 className="text-xl font-bold text-gray-900">Đăng nhập</h1>
+            <p className="text-gray-400 text-xs">Dành cho nhân viên & quản lý</p>
+          </div>
+        </div>
+
+        <form onSubmit={login} className="space-y-4" autoComplete="on">
+          <div>
+            <label htmlFor="email" className="text-sm font-medium text-gray-700">Email</label>
             <input
+              id="email"
+              name="email"
               type="email"
+              autoComplete="email"
               value={email}
               onChange={e => setEmail(e.target.value)}
               required
-              className="mt-1 w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-300"
               placeholder="nhanvien@quan.com"
+              className={inputCls}
             />
           </div>
+
           <div>
-            <label className="text-sm font-medium text-gray-700">Mật khẩu</label>
-            <input
-              type="password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              required
-              className="mt-1 w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-300"
-            />
+            <label htmlFor="password" className="text-sm font-medium text-gray-700">Mật khẩu</label>
+            <div className="relative mt-1">
+              <input
+                id="password"
+                name="password"
+                type={showPw ? 'text' : 'password'}
+                autoComplete="current-password"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+                required
+                className="w-full border border-gray-200 rounded-xl px-3 py-2.5 pr-10 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-300"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPw(v => !v)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+              >
+                {showPw ? <EyeOff size={16} /> : <Eye size={16} />}
+              </button>
+            </div>
           </div>
+
           <Button size="lg" className="w-full" type="submit" loading={loading}>
             Đăng nhập
           </Button>
