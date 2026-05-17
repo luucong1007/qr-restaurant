@@ -1,8 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import { formatCurrency } from '@/lib/utils'
 import { Card } from '@/components/ui/card'
-import Link from 'next/link'
-import { ArrowLeft } from 'lucide-react'
 
 export default async function ReportsPage() {
   const supabase = await createClient()
@@ -33,10 +31,7 @@ export default async function ReportsPage() {
 
   return (
     <main className="min-h-screen bg-gray-50 p-6">
-      <Link href="/admin" className="inline-flex items-center gap-1 text-gray-500 hover:text-gray-800 mb-4 text-sm">
-        <ArrowLeft size={16} /> Quay lại
-      </Link>
-      <h1 className="text-2xl font-bold text-gray-900 mb-2">Báo cáo</h1>
+<h1 className="text-2xl font-bold text-gray-900 mb-2">Báo cáo</h1>
       <p className="text-gray-500 text-sm mb-6">Tháng này ({startOfMonth.toLocaleDateString('vi-VN')} - hôm nay)</p>
 
       <div className="grid grid-cols-2 gap-4 mb-6">

@@ -1,7 +1,5 @@
 import { createClient } from '@/lib/supabase/server'
 import { MenuClient } from './MenuClient'
-import Link from 'next/link'
-import { ArrowLeft } from 'lucide-react'
 
 interface PageProps {
   searchParams: Promise<{ branch?: string }>
@@ -37,9 +35,6 @@ export default async function MenuPage({ searchParams }: PageProps) {
 
   return (
     <main className="min-h-screen bg-gray-50 p-4 md:p-6">
-      <Link href="/admin" className="inline-flex items-center gap-1 text-gray-500 hover:text-gray-800 mb-4 text-sm">
-        <ArrowLeft size={16} /> Quay lại
-      </Link>
       {/* Branch switcher */}
       {branches.length > 1 && (
         <div className="flex gap-2 mb-6 overflow-x-auto">

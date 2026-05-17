@@ -40,9 +40,14 @@ export default async function MenuPage({ params }: PageProps) {
     <main className="min-h-screen bg-gray-50 pb-24">
       {/* Header */}
       <div className="bg-white sticky top-0 z-40 shadow-sm">
-        <div className="px-4 py-3">
-          <h1 className="font-bold text-lg text-gray-900">{branch.name}</h1>
-          <p className="text-sm text-gray-500">Bàn {table.name}</p>
+        <div className="px-4 py-3 flex items-center gap-3">
+          <div className="bg-orange-500 rounded-xl w-9 h-9 flex items-center justify-center text-xl flex-shrink-0 shadow-sm">
+            🍜
+          </div>
+          <div>
+            <h1 className="font-bold text-lg text-gray-900 leading-tight">{branch.name}</h1>
+            <p className="text-sm text-gray-500">Bàn {table.name}</p>
+          </div>
         </div>
         {/* Category tabs */}
         <div className="flex gap-2 overflow-x-auto px-4 pb-3 scrollbar-hide">

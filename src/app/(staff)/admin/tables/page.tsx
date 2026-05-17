@@ -1,7 +1,5 @@
 import { createClient } from '@/lib/supabase/server'
 import { QRTableCard } from './QRTableCard'
-import Link from 'next/link'
-import { ArrowLeft } from 'lucide-react'
 
 export default async function TablesPage() {
   const supabase = await createClient()
@@ -18,10 +16,7 @@ export default async function TablesPage() {
 
   return (
     <main className="min-h-screen bg-gray-50 p-6">
-      <Link href="/admin" className="inline-flex items-center gap-1 text-gray-500 hover:text-gray-800 mb-4 text-sm">
-        <ArrowLeft size={16} /> Quay lại
-      </Link>
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">Quản lý Bàn & QR</h1>
+<h1 className="text-2xl font-bold text-gray-900 mb-6">Quản lý Bàn & QR</h1>
       <div className="space-y-8">
         {tablesByBranch.map(({ branch, tables }) => (
           <section key={branch.id}>
