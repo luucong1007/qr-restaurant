@@ -2,7 +2,7 @@
 import { Table } from '@/types'
 import QRCode from 'qrcode'
 import { useEffect, useRef } from 'react'
-import { Download } from 'lucide-react'
+import { Download, ExternalLink } from 'lucide-react'
 
 interface Props {
   table: Table
@@ -31,14 +31,35 @@ export function QRTableCard({ table, branchSlug }: Props) {
 
   return (
     <div className="bg-white rounded-2xl border border-gray-100 p-3 flex flex-col items-center gap-2 shadow-sm">
-      <p className="font-bold text-gray-800">Bàn {table.name}</p>
+      <div className="flex items-center justify-between w-full">
+        <p className="font-bold text-gray-800">Bàn {table.name}</p>
+        <a
+          href={tableUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-400 hover:text-orange-500 transition-colors"
+          title="Mở trang bàn"
+        >
+          <ExternalLink size={14} />
+        </a>
+      </div>
       <canvas ref={canvasRef} className="rounded-lg" />
-      <button
-        onClick={downloadQR}
-        className="flex items-center gap-1 text-xs text-gray-500 hover:text-orange-500 transition-colors"
-      >
-        <Download size={12} /> Tải QR
-      </button>
+      <div className="flex items-center gap-3">
+        <button
+          onClick={downloadQR}
+          className="flex items-center gap-1 text-xs text-gray-500 hover:text-orange-500 transition-colors"
+        >
+          <Download size={12} /> Tải QR
+        </button>
+        <a
+          href={tableUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1 text-xs text-gray-500 hover:text-orange-500 transition-colors"
+        >
+          <ExternalLink size={12} /> Mở link
+        </a>
+      </div>
     </div>
   )
 }
