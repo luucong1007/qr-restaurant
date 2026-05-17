@@ -2,6 +2,7 @@ import { createClient } from '@/lib/supabase/server'
 import { Table } from '@/types'
 import Link from 'next/link'
 import { ArrowLeft, MapPin, Utensils } from 'lucide-react'
+import { MapEmbed } from '@/components/ui/map-embed'
 
 export default async function TablesListPage() {
   const supabase = await createClient()
@@ -17,8 +18,6 @@ export default async function TablesListPage() {
       .filter((t: Table) => t.branch_id === branch.id)
       .sort((a: Table, b: Table) => parseInt(a.number) - parseInt(b.number)),
   }))
-
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? ''
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-orange-50 to-amber-50 pb-10">
@@ -57,6 +56,13 @@ export default async function TablesListPage() {
                 )}
               </div>
             </div>
+
+            {/* Map */}
+            {branch.latitude && branch.longitude && (
+              <div className="mb-4">
+                <MapEmbed lat={branch.latitude} lng={branch.longitude} name={branch.name} className="w-full h-44 rounded-2xl" />
+              </div>
+            )}
 
             {/* Tables grid */}
             <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2">

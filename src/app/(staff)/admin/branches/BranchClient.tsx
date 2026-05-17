@@ -7,11 +7,14 @@ import { Badge } from '@/components/ui/badge'
 import { Card } from '@/components/ui/card'
 import { Plus, Pencil, MapPin, Phone, Link2, ToggleLeft, ToggleRight } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
+import { MapEmbed } from '@/components/ui/map-embed'
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
 
-export function BranchClient({ branches: initial }: { branches: Branch[] }) {
-  const [branches, setBranches] = useState(initial)
+type BranchWithCoords = Branch & { latitude?: number; longitude?: number }
+
+export function BranchClient({ branches: initial }: { branches: BranchWithCoords[] }) {
+  const [branches, setBranches] = useState<BranchWithCoords[]>(initial)
   const [editing, setEditing] = useState<Branch | null | 'new'>(null)
   const router = useRouter()
 
@@ -86,6 +89,12 @@ export function BranchClient({ branches: initial }: { branches: Branch[] }) {
                   </p>
                 </div>
               </div>
+
+              {branch.latitude && branch.longitude && (
+                <div className="mt-3">
+                  <MapEmbed lat={branch.latitude} lng={branch.longitude} name={branch.name} className="w-full h-40 rounded-xl" />
+                </div>
+              )}
 
               <div className="flex flex-col gap-2 flex-shrink-0">
                 <Button size="sm" variant="secondary" onClick={() => setEditing(branch)}>
