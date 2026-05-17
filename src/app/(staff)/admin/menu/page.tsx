@@ -62,7 +62,7 @@ export default async function MenuPage({ searchParams }: PageProps) {
         <Link
           href={`/admin/menu?${branchQuery}&tab=items`}
           className={`px-5 py-2 rounded-xl text-sm font-medium transition-colors ${
-            tab === 'items' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'
+            tab === 'items' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-600 hover:text-gray-900'
           }`}
         >
           🍜 Món ăn
@@ -70,7 +70,7 @@ export default async function MenuPage({ searchParams }: PageProps) {
         <Link
           href={`/admin/menu?${branchQuery}&tab=categories`}
           className={`px-5 py-2 rounded-xl text-sm font-medium transition-colors ${
-            tab === 'categories' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'
+            tab === 'categories' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-600 hover:text-gray-900'
           }`}
         >
           📂 Danh mục

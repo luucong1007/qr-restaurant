@@ -8,7 +8,7 @@ import { MapPin, Loader2 } from 'lucide-react'
 import toast from 'react-hot-toast'
 
 interface Props {
-  branch?: Branch & { latitude?: number; longitude?: number }
+  branch?: Branch
   onDone: () => void
   onCancel: () => void
 }
@@ -131,8 +131,8 @@ export function BranchForm({ branch, onDone, onCancel }: Props) {
       </div>
 
       {/* Map preview */}
-      {lat && lng && (
-        <MapEmbed lat={lat} lng={lng} name={name} className="w-full h-44 rounded-xl border border-gray-200" />
+      {(name || address) && (
+        <MapEmbed lat={lat} lng={lng} name={name} address={address} className="w-full h-44 rounded-xl border border-gray-200" />
       )}
 
       <div>

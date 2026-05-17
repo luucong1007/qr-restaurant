@@ -4,6 +4,7 @@ import { MenuItemCard } from '@/components/customer/MenuItemCard'
 import { CartBar } from '@/components/customer/CartBar'
 import { StaffCallButton } from '@/components/customer/StaffCallButton'
 import { MenuItem, Category } from '@/types'
+import { MapEmbed } from '@/components/ui/map-embed'
 
 interface PageProps {
   params: Promise<{ branchSlug: string; tableId: string }>
@@ -62,6 +63,19 @@ export default async function MenuPage({ params }: PageProps) {
           ))}
         </div>
       </div>
+
+      {/* Branch location */}
+      {branch.address && (
+        <div className="px-4 mt-4">
+          <MapEmbed
+            lat={branch.latitude}
+            lng={branch.longitude}
+            name={branch.name}
+            address={branch.address}
+            className="w-full h-44 rounded-2xl"
+          />
+        </div>
+      )}
 
       {/* Menu */}
       <div className="px-4 mt-4 space-y-6">

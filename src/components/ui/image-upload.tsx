@@ -60,7 +60,7 @@ export function ImageUpload({ value, onChange, onRemove }: ImageUploadProps) {
             <X size={14} />
           </button>
         </div>
-        <p className="text-xs text-gray-400 truncate px-1">{value}</p>
+        <p className="text-xs text-gray-500 truncate px-1">{value}</p>
       </div>
     )
   }
@@ -94,7 +94,7 @@ export function ImageUpload({ value, onChange, onRemove }: ImageUploadProps) {
           type="button"
           onClick={() => inputRef.current?.click()}
           disabled={loading}
-          className="w-full h-36 rounded-xl border-2 border-dashed border-gray-200 flex flex-col items-center justify-center gap-2 text-gray-400 hover:border-orange-300 hover:text-orange-400 transition-colors disabled:opacity-50"
+          className="w-full h-36 rounded-xl border-2 border-dashed border-gray-300 flex flex-col items-center justify-center gap-2 text-gray-500 hover:border-orange-300 hover:text-orange-500 transition-colors disabled:opacity-50"
         >
           {loading ? <Loader2 size={24} className="animate-spin" /> : <Upload size={24} />}
           <span className="text-sm">{loading ? 'Đang upload...' : 'Chọn ảnh (tối đa 2MB)'}</span>
@@ -125,7 +125,7 @@ export function ImageUpload({ value, onChange, onRemove }: ImageUploadProps) {
               <Image src={urlInput.trim()} alt="Preview" fill className="object-cover" unoptimized onError={() => {}} />
             </div>
           )}
-          <p className="text-xs text-gray-400">Kéo link ảnh từ Google, website... dán vào đây</p>
+          <p className="text-xs text-gray-500">Kéo link ảnh từ Google, website... dán vào đây</p>
         </div>
       )}
     </div>

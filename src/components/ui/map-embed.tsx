@@ -1,17 +1,28 @@
 'use client'
 
 interface MapEmbedProps {
-  lat: number
-  lng: number
+  lat?: number | null
+  lng?: number | null
   name: string
+  address?: string | null
   className?: string
 }
 
-export function MapEmbed({ lat, lng, name, className = 'w-full h-48 rounded-xl' }: MapEmbedProps) {
-  const delta = 0.008
-  const bbox = `${lng - delta},${lat - delta},${lng + delta},${lat + delta}`
-  const src = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${lat},${lng}`
-  const mapsUrl = `https://www.google.com/maps?q=${lat},${lng}`
+export function MapEmbed({ lat, lng, name, address, className = 'w-full h-48 rounded-xl' }: MapEmbedProps) {
+  const query = [name, address].filter(Boolean).join(', ')
+
+  let src: string
+  let mapsUrl: string
+
+  if (lat && lng) {
+    const delta = 0.008
+    const bbox = `${lng - delta},${lat - delta},${lng + delta},${lat + delta}`
+    src = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${lat},${lng}`
+    mapsUrl = `https://www.google.com/maps?q=${lat},${lng}`
+  } else {
+    src = `https://maps.google.com/maps?q=${encodeURIComponent(query)}&output=embed`
+    mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`
+  }
 
   return (
     <div className="space-y-1">

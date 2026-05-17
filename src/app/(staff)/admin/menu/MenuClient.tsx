@@ -71,8 +71,8 @@ export function MenuClient({ items: initialItems, categories, branchId }: Props)
       {/* Menu list grouped by category */}
       {grouped.map(({ cat, items: catItems }) => (
         <section key={cat.id}>
-          <h2 className="font-semibold text-gray-600 text-sm uppercase tracking-wide mb-3">
-            {cat.name} ({catItems.length})
+          <h2 className="font-bold text-gray-800 mb-3">
+            {cat.name} <span className="text-gray-500 font-normal text-sm">({catItems.length})</span>
           </h2>
           <div className="space-y-2">
             {catItems.map(item => (
@@ -95,7 +95,7 @@ export function MenuClient({ items: initialItems, categories, branchId }: Props)
                 <div className="flex-1 min-w-0">
                   <p className="font-semibold text-gray-900 truncate">{item.name}</p>
                   {item.description && (
-                    <p className="text-xs text-gray-400 truncate">{item.description}</p>
+                    <p className="text-xs text-gray-600 truncate">{item.description}</p>
                   )}
                   <div className="flex items-center gap-2 mt-1">
                     <span className="text-orange-500 font-bold text-sm">{formatCurrency(item.price)}</span>

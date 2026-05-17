@@ -11,7 +11,7 @@ import { MapEmbed } from '@/components/ui/map-embed'
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
 
-type BranchWithCoords = Branch & { latitude?: number; longitude?: number }
+type BranchWithCoords = Branch
 
 export function BranchClient({ branches: initial }: { branches: BranchWithCoords[] }) {
   const [branches, setBranches] = useState<BranchWithCoords[]>(initial)
@@ -90,9 +90,9 @@ export function BranchClient({ branches: initial }: { branches: BranchWithCoords
                 </div>
               </div>
 
-              {branch.latitude && branch.longitude && (
+              {(branch.address || branch.latitude) && (
                 <div className="mt-3">
-                  <MapEmbed lat={branch.latitude} lng={branch.longitude} name={branch.name} className="w-full h-40 rounded-xl" />
+                  <MapEmbed lat={branch.latitude} lng={branch.longitude} name={branch.name} address={branch.address} className="w-full h-40 rounded-xl" />
                 </div>
               )}
 

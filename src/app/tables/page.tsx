@@ -58,9 +58,9 @@ export default async function TablesListPage() {
             </div>
 
             {/* Map */}
-            {branch.latitude && branch.longitude && (
+            {branch.address && (
               <div className="mb-4">
-                <MapEmbed lat={branch.latitude} lng={branch.longitude} name={branch.name} className="w-full h-44 rounded-2xl" />
+                <MapEmbed lat={branch.latitude} lng={branch.longitude} name={branch.name} address={branch.address} className="w-full h-44 rounded-2xl" />
               </div>
             )}
 

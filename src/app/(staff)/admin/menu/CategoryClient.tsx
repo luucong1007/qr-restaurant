@@ -121,7 +121,7 @@ export function CategoryClient({ categories: initial, branchId }: { categories: 
               <button
                 onClick={() => moveOrder(cat, -1)}
                 disabled={idx === 0}
-                className="text-gray-300 hover:text-gray-500 disabled:opacity-20 transition-colors"
+                className="text-gray-400 hover:text-gray-600 disabled:opacity-30 transition-colors"
               >
                 <GripVertical size={14} />
               </button>
@@ -146,13 +146,13 @@ export function CategoryClient({ categories: initial, branchId }: { categories: 
               </div>
             ) : (
               <>
-                <span className="flex-1 font-medium text-gray-800">{cat.name}</span>
-                <span className="text-xs text-gray-400">#{idx + 1}</span>
+                <span className="flex-1 font-medium text-gray-900">{cat.name}</span>
+                <span className="text-xs text-gray-500">#{idx + 1}</span>
 
                 <div className="flex items-center gap-1">
                   <button
                     onClick={() => { setEditingId(cat.id); setEditName(cat.name) }}
-                    className="p-2 rounded-xl hover:bg-gray-100 text-gray-400 hover:text-gray-700 transition-colors"
+                    className="p-2 rounded-xl hover:bg-gray-100 text-gray-500 hover:text-gray-800 transition-colors"
                   >
                     <Pencil size={14} />
                   </button>
@@ -168,7 +168,7 @@ export function CategoryClient({ categories: initial, branchId }: { categories: 
                   </button>
                   <button
                     onClick={() => deleteCategory(cat)}
-                    className="p-2 rounded-xl hover:bg-red-50 text-gray-400 hover:text-red-500 transition-colors"
+                    className="p-2 rounded-xl hover:bg-red-50 text-gray-500 hover:text-red-500 transition-colors"
                   >
                     <Trash2 size={14} />
                   </button>

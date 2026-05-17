@@ -8,6 +8,8 @@ export interface Branch {
   phone: string
   is_active: boolean
   created_at: string
+  latitude?: number | null
+  longitude?: number | null
 }
 
 export interface Table {
