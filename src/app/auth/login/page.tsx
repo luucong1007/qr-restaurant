@@ -94,6 +94,7 @@ export default function LoginPage() {
             Đăng nhập
           </Button>
         </form>
+        <p className="text-xs text-gray-300 text-center mt-6">© {new Date().getFullYear()} CongLV8</p>
       </div>
     </div>
   )

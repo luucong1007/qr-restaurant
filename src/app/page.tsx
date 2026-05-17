@@ -65,6 +65,8 @@ export default function Home() {
         <p className="text-xs text-gray-400">
           Khách hàng truy cập bằng cách quét QR trên bàn
         </p>
+
+        <p className="text-xs text-gray-300">© {new Date().getFullYear()} CongLV8. All rights reserved.</p>
       </div>
     </main>
   )
