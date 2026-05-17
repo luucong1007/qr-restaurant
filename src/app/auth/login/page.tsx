@@ -34,7 +34,7 @@ export default function LoginPage() {
               value={email}
               onChange={e => setEmail(e.target.value)}
               required
-              className="mt-1 w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300"
+              className="mt-1 w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-300"
               placeholder="nhanvien@quan.com"
             />
           </div>
@@ -45,7 +45,7 @@ export default function LoginPage() {
               value={password}
               onChange={e => setPassword(e.target.value)}
               required
-              className="mt-1 w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300"
+              className="mt-1 w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-300"
             />
           </div>
           <Button size="lg" className="w-full" type="submit" loading={loading}>

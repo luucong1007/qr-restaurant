@@ -64,7 +64,7 @@ export function MenuForm({ item, categories, branchId, onDone, onCancel }: Props
           onChange={e => setName(e.target.value)}
           required
           placeholder="Phở bò tái nạm"
-          className="mt-1 w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300"
+          className="mt-1 w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-300"
         />
       </div>
 
@@ -75,7 +75,7 @@ export function MenuForm({ item, categories, branchId, onDone, onCancel }: Props
           onChange={e => setDescription(e.target.value)}
           placeholder="Nước dùng hầm xương 12 tiếng..."
           rows={2}
-          className="mt-1 w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300 resize-none"
+          className="mt-1 w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-300 resize-none"
         />
       </div>
 
@@ -89,7 +89,7 @@ export function MenuForm({ item, categories, branchId, onDone, onCancel }: Props
             required
             min={0}
             placeholder="75000"
-            className="mt-1 w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300"
+            className="mt-1 w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-300"
           />
         </div>
         <div>
@@ -97,7 +97,7 @@ export function MenuForm({ item, categories, branchId, onDone, onCancel }: Props
           <select
             value={categoryId}
             onChange={e => setCategoryId(e.target.value)}
-            className="mt-1 w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300 bg-white"
+            className="mt-1 w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-300 bg-white"
           >
             {categories.map(c => (
               <option key={c.id} value={c.id}>{c.name}</option>
