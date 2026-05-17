@@ -1,4 +1,5 @@
 import { Logo } from '@/components/ui/logo'
+import { LogoutButton } from '@/components/ui/logout-button'
 import Link from 'next/link'
 import { LayoutDashboard, ChefHat, CreditCard, UtensilsCrossed } from 'lucide-react'
 
@@ -27,6 +28,8 @@ export default function StaffLayout({ children }: { children: React.ReactNode })
                 <span className="hidden sm:inline">{label}</span>
               </Link>
             ))}
+            <div className="w-px h-5 bg-gray-200 mx-1" />
+            <LogoutButton />
           </nav>
         </div>
       </header>
