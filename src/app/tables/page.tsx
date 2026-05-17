@@ -8,12 +8,14 @@ export default async function TablesListPage() {
 
   const [{ data: branches }, { data: tables }] = await Promise.all([
     supabase.from('branches').select('*').eq('is_active', true).order('name'),
-    supabase.from('tables').select('*').eq('is_active', true).order('number'),
+    supabase.from('tables').select('*').eq('is_active', true),
   ])
 
   const branchesWithTables = (branches ?? []).map(branch => ({
     ...branch,
-    tables: (tables ?? []).filter((t: Table) => t.branch_id === branch.id),
+    tables: (tables ?? [])
+      .filter((t: Table) => t.branch_id === branch.id)
+      .sort((a: Table, b: Table) => parseInt(a.number) - parseInt(b.number)),
   }))
 
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? ''
