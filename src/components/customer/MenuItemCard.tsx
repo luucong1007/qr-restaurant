@@ -14,7 +14,7 @@ export function MenuItemCard({ item }: { item: MenuItem }) {
     <div className="flex gap-3 p-3 bg-white rounded-2xl shadow-sm border border-gray-100">
       {item.image_url && (
         <div className="relative w-24 h-24 rounded-xl overflow-hidden flex-shrink-0">
-          <Image src={item.image_url} alt={item.name} fill className="object-cover" />
+          <Image src={item.image_url} alt={item.name} fill className="object-cover" unoptimized />
         </div>
       )}
       <div className="flex-1 min-w-0">
