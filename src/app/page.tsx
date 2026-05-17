@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { QrCode, ChefHat, MonitorSmartphone, BarChart3 } from 'lucide-react'
+import { QrCode, ChefHat, MonitorSmartphone, BarChart3, MapPin } from 'lucide-react'
 
 export default function Home() {
   return (
@@ -52,6 +52,15 @@ export default function Home() {
             </Link>
           </div>
         </div>
+
+        {/* Table list shortcut */}
+        <Link
+          href="/tables"
+          className="flex items-center justify-center gap-2 w-full bg-white border border-gray-200 text-gray-700 rounded-2xl py-3.5 font-medium hover:bg-gray-50 hover:border-orange-300 transition-colors shadow-sm"
+        >
+          <MapPin size={18} className="text-orange-500" />
+          Xem danh sách tất cả bàn
+        </Link>
 
         <p className="text-xs text-gray-400">
           Khách hàng truy cập bằng cách quét QR trên bàn
