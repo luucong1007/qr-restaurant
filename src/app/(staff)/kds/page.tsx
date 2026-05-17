@@ -6,6 +6,8 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { formatDistanceToNow } from 'date-fns'
 import { vi } from 'date-fns/locale'
+import Link from 'next/link'
+import { ArrowLeft } from 'lucide-react'
 
 const KDS_STATUSES: OrderStatus[] = ['pending', 'confirmed', 'preparing']
 
@@ -71,7 +73,12 @@ export default function KDSPage() {
   return (
     <div className="min-h-screen bg-gray-900 p-4">
       <div className="flex items-center justify-between mb-4">
-        <h1 className="text-white font-bold text-2xl">Kitchen Display</h1>
+        <div className="flex items-center gap-3">
+          <Link href="/admin" className="text-gray-500 hover:text-white transition-colors">
+            <ArrowLeft size={20} />
+          </Link>
+          <h1 className="text-white font-bold text-2xl">Kitchen Display</h1>
+        </div>
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
           <span className="text-green-400 text-sm">Live</span>

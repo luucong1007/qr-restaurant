@@ -5,7 +5,8 @@ import { Order, OrderStatus, PaymentMethod } from '@/types'
 import { formatCurrency } from '@/lib/utils'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { CheckCircle, Bell } from 'lucide-react'
+import { CheckCircle, Bell, ArrowLeft } from 'lucide-react'
+import Link from 'next/link'
 import toast from 'react-hot-toast'
 
 const ACTIVE_STATUSES: OrderStatus[] = ['ready', 'served', 'pending', 'confirmed', 'preparing']
@@ -82,7 +83,12 @@ export default function POSPage() {
     <div className="min-h-screen bg-gray-50 flex gap-4 p-4">
       {/* Left: Orders */}
       <div className="flex-1 space-y-3 overflow-y-auto">
-        <h1 className="font-bold text-xl text-gray-900">POS Thu ngân</h1>
+        <div className="flex items-center gap-2">
+          <Link href="/admin" className="text-gray-400 hover:text-gray-700 transition-colors">
+            <ArrowLeft size={20} />
+          </Link>
+          <h1 className="font-bold text-xl text-gray-900">POS Thu ngân</h1>
+        </div>
 
         {staffCalls.length > 0 && (
           <div className="space-y-2">
